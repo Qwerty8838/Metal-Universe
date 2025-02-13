@@ -19,7 +19,7 @@ namespace MetalUniverse.Controllers
 
         public IActionResult Index()
         {
-            // Retrieve last 3 products based on ProductID descending
+
             var lastThreeProducts = _context.Products
                 .OrderByDescending(p => p.ProductID)
                 .Take(3)

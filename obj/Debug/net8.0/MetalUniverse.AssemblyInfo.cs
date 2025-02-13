@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetalUniverse")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8514e34142ab426823024266c6b2f8976c8c25dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08b93cd618dbf472ca83ea5117e4211b3e895b64")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetalUniverse")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetalUniverse")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

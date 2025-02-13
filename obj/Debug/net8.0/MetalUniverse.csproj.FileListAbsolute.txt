@@ -84,3 +84,4 @@ C:\Users\mniko\OneDrive\Desktop\7ми_семестър\C#\MetalUniverse\MetalUni
 C:\Users\mniko\OneDrive\Desktop\7ми_семестър\C#\MetalUniverse\MetalUniverse\MetalUniverse\obj\Debug\net8.0\MetalUniverse.pdb
 C:\Users\mniko\OneDrive\Desktop\7ми_семестър\C#\MetalUniverse\MetalUniverse\MetalUniverse\obj\Debug\net8.0\MetalUniverse.genruntimeconfig.cache
 C:\Users\mniko\OneDrive\Desktop\7ми_семестър\C#\MetalUniverse\MetalUniverse\MetalUniverse\obj\Debug\net8.0\ref\MetalUniverse.dll
+C:\Users\mniko\OneDrive\Desktop\7ми_семестър\C#\MetalUniverse\MetalUniverse\MetalUniverse\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

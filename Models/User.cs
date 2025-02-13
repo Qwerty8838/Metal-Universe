@@ -1,6 +1,8 @@
-﻿namespace MetalUniverse.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace MetalUniverse.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         public int UserID { get; set; }
         public string? Username { get; set; }
