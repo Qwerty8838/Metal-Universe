@@ -1,23 +1,36 @@
 using MetalUniverse.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using MetalUniverse.Data;
 
 namespace MetalUniverse.Controllers
 {
+    
+    using Microsoft.AspNetCore.Mvc;
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            // Retrieve last 3 products based on ProductID descending
+            var lastThreeProducts = _context.Products
+                .OrderByDescending(p => p.ProductID)
+                .Take(3)
+                .ToList();
 
+            return View(lastThreeProducts);
+        }
+    }
+
+
+ /*
         public IActionResult Privacy()
         {
             return View();
@@ -27,6 +40,6 @@ namespace MetalUniverse.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+        }  
+    } */ 
 }

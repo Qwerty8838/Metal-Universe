@@ -1,7 +1,10 @@
-﻿namespace MetalUniverse.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MetalUniverse.Models
 {
     public class UpcomingEvent
     {
+        [Key]
         public int EventID { get; set; }
         public string? EventName { get; set; }
         public DateTime EventDate { get; set; }
