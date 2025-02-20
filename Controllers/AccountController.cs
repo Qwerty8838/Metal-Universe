@@ -1,54 +1,65 @@
-﻿using MetalUniverse.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using MetalUniverse.Models;
 using MetalUniverse.Data;
 
-namespace MetalUniverse.Controllers
-{
-    public class AccountController : Controller
+public class AccountController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
 
-        public AccountController(ApplicationDbContext context, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
-            _signInManager = signInManager;
         }
 
-        // Регистрация страница
-        public IActionResult Register()
-        {
-            return View();
-        }
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
 
-        // Регистрация логика
-        [HttpPost]
+    [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new User { Username = model.Username, Email = model.Email, RegistrationDate = DateTime.Now };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                // Създаваме нов потребител
+                var user = new User
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                    Username = model.Username,
+                    Email = model.Email,
+                    RegistrationDate = DateTime.Now,
+                    PasswordHash = HashPassword(model.Password), // Ръчно хеширане
+                    Role = "client"
+                };
+
+                // Добавяме потребителя в базата данни
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+
+                // Пренасочваме към началната страница
+                return RedirectToAction("Index", "Home");
             }
+
             return View(model);
         }
 
-        // Логин страница
-        public IActionResult Login()
+        private string HashPassword(string password)
+        {
+            // Ръчно хеширане на паролата (за простота)
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                var bytes = System.Text.Encoding.UTF8.GetBytes(password);
+                var hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
+        }
+    }
+
+
+/*
+    // Логин страница
+    public IActionResult Login()
         {
             return View();
         }
@@ -78,5 +89,5 @@ namespace MetalUniverse.Controllers
             return RedirectToAction("Index", "Home");
         }
     }
-}
+}*/
 

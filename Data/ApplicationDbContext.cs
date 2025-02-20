@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MetalUniverse.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace MetalUniverse.Data;
 
 public class ApplicationDbContext : DbContext

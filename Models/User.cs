@@ -2,7 +2,7 @@
 
 namespace MetalUniverse.Models
 {
-    public class User : IdentityUser
+    public class User 
     {
         public int UserID { get; set; }
         public string? Username { get; set; }

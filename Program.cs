@@ -11,9 +11,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-builder.Services.AddIdentity<User, IdentityRole>()
+/*builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders(); */
 
 builder.Services.AddControllersWithViews();
 
@@ -35,8 +35,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); // Добави Authentication
-app.UseAuthorization();
+//app.UseAuthentication(); 
+//app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
